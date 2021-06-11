@@ -5,8 +5,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.lib.tech.service.LibService;
+import com.lib.tech.service.StarterService;
 
+/**
+ * @author Amrut Bugde
+ *
+ */
 @ComponentScan("com.lib.tech")
 @Configuration
 public class BookLibraryApp {
@@ -14,12 +18,11 @@ public class BookLibraryApp {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(BookLibraryApp.class);
-		LibService libService = ctx.getBean(LibService.class);
-		libService.showStock();
-		libService.addStock();
-		libService.showStock();
-		libService.removeStock();
-		libService.showStock();
+		StarterService service = ctx.getBean(StarterService.class);
+		
+		service.start();
+		
+		((AnnotationConfigApplicationContext)ctx).close();
 	}
 
 }

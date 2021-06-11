@@ -2,19 +2,38 @@ package com.lib.tech.model;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Component
+/**
+ * @author Amrut Bugde
+ *
+ */
+@Entity
+@Table(name = "stock")
 public class Stock {
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	private long stockId;
+	
+	@Column(name="book_id")
 	private int bookId;
+	
+	@Column(name="description")
 	private String description;
+	
+	@Column(name="quantity")
 	private int quantity;
+	
+	@Column(name="modified_date")
 	private Date modifiedDate;
 	
 	public Stock() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public long getStockId() {
@@ -56,6 +75,11 @@ public class Stock {
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Stock [stockId=" + stockId + ", bookId=" + bookId + ", description=" + description + ", quantity="
+				+ quantity + ", modifiedDate=" + modifiedDate + "]";
+	}
 	
 }

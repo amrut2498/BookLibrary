@@ -1,18 +1,38 @@
 package com.lib.tech.model;
 
-import org.springframework.stereotype.Component;
 
-@Component
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/**
+ * @author Amrut Bugde
+ *
+ */
+@Entity
+@Table(name = "book")
 public class Book {
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	private int bookId;
+	
+	@Column(name="book_name")
 	private String bookName;
+	
+	@Column(name="author")
 	private String author;
+	
+	@Column(name="price")
 	private double price;
+	
+	@Column(name="publisher")
 	private String publisher;
 	
 	public Book() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public int getBookId() {
@@ -53,6 +73,12 @@ public class Book {
 
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [bookId=" + bookId + ", bookName=" + bookName + ", author=" + author + ", price=" + price
+				+ ", publisher=" + publisher + "]";
 	}
 	
 }
